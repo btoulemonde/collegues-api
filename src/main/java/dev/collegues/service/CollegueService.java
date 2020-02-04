@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import dev.collegues.entite.Collegue;
 import dev.collegues.repository.CollegueRepository;
 
 @Service
@@ -18,6 +19,10 @@ public class CollegueService {
 	public CollegueService(CollegueRepository collegueRepository) {
 		super();
 		this.collegueRepository = collegueRepository;
+	}
+
+	public List<Collegue> liste() {
+		return this.collegueRepository.findAll();
 	}
 
 	public List<String> listerCollegues(String nomReq) {
