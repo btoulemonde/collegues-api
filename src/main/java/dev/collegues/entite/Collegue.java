@@ -22,6 +22,13 @@ public class Collegue {
 	private String photoUrl;
 
 	/**
+	 * 
+	 */
+	public Collegue() {
+		super();
+	}
+
+	/**
 	 * @param nom
 	 * @param prenoms
 	 * @param email
