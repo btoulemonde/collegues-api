@@ -30,7 +30,7 @@ public class CollegueController {
 	}
 
 	@GetMapping(params = "nom")
-	public List<Collegue> findMatriculesByNom(@RequestParam("nom") String nomRequete) {
+	public List<String> findMatriculesByNom(@RequestParam("nom") String nomRequete) {
 		return this.collegueService.listerCollegues(nomRequete);
 
 	}
