@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import dev.collegues.entite.Collegue;
 import dev.collegues.repository.CollegueRepository;
+import dev.collegues.view.CollegueView;
 
 @Service
 public class CollegueService {
@@ -30,5 +31,10 @@ public class CollegueService {
 		return this.collegueRepository.findByNom(nomReq).stream().map(coll -> coll.getMatricule())
 				.collect(Collectors.toList());
 
+	}
+
+	public CollegueView listerCollegueParMaricule(String matriculeReq) {
+		Collegue collegue = this.collegueRepository.findByMatricule(matriculeReq);
+		return new CollegueView(collegue.getMatricule(), collegue.getNom(), collegue.getPrenoms(), collegue.getDateDeNaissance(), collegue.getPhotoUrl());
 	}
 }
