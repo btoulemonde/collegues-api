@@ -1,19 +1,19 @@
 package dev.collegues.entite;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.Type;
 
 @Entity(name = "collegue")
 public class Collegue {
 
 	@Id
-	@Type(type = "uuid-char")
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
 	private String matricule;
 	private String nom;
 	private String prenoms;
@@ -22,29 +22,21 @@ public class Collegue {
 	private String photoUrl;
 
 	/**
-	 * 
+	 * @param nom
+	 * @param prenoms
+	 * @param email
+	 * @param dateDeNaissance
+	 * @param photoUrl
 	 */
-	public Collegue() {
-		this.matricule = this.id.toString();
-	}
-
-	/**
-	 * Getter
-	 * 
-	 * @return the id
-	 */
-	public UUID getId() {
-		return id;
-	}
-
-	/**
-	 * Setter
-	 * 
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(UUID id) {
-		this.id = id;
+	public Collegue(String matricule, String nom, String prenoms, String email, LocalDate dateDeNaissance,
+			String photoUrl) {
+		super();
+		this.matricule = matricule;
+		this.nom = nom;
+		this.prenoms = prenoms;
+		this.email = email;
+		this.dateDeNaissance = dateDeNaissance;
+		this.photoUrl = photoUrl;
 	}
 
 	/**
@@ -159,6 +151,25 @@ public class Collegue {
 	 */
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
+	}
+
+	/**
+	 * Getter
+	 * 
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * Setter
+	 * 
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }
