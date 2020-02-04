@@ -2,9 +2,9 @@ package dev.collegues.controller;
 
 import java.util.List;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.collegues.entite.Collegue;
@@ -30,7 +30,7 @@ public class CollegueController {
 	}
 
 	@GetMapping(params = "nom")
-	public List<Collegue> findMatriculesByNom(@Param("nom") String nomRequete) {
+	public List<Collegue> findMatriculesByNom(@RequestParam("nom") String nomRequete) {
 		return this.collegueService.listerCollegues(nomRequete);
 
 	}
