@@ -3,10 +3,13 @@ package dev.collegues.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import dev.collegues.entite.Collegue;
 import dev.collegues.exception.CollegueNonTrouveException;
+import dev.collegues.modelJson.CollegueJson;
 import dev.collegues.repository.CollegueRepository;
 import dev.collegues.view.CollegueView;
 
@@ -42,5 +45,11 @@ public class CollegueService {
 			return new CollegueView(collegue.getMatricule(), collegue.getNom(), collegue.getPrenoms(),
 					collegue.getDateDeNaissance(), collegue.getPhotoUrl());
 		}
+	}
+
+	public void ajouterCollegue(CollegueJson collegueJson) {
+		this.collegueRepository.save(new Collegue(collegueJson.getNom(), collegueJson.getPrenoms(),
+				collegueJson.getDateDeNaissance(), collegueJson.getPhotoUrl()));
+		ResponseEntity.status(HttpStatus.FOUND);
 	}
 }

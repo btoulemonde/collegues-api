@@ -31,6 +31,20 @@ public class Collegue {
 	/**
 	 * @param nom
 	 * @param prenoms
+	 * @param dateDeNaissance
+	 * @param photoUrl
+	 */
+	public Collegue(String nom, String prenoms, LocalDate dateDeNaissance, String photoUrl) {
+		super();
+		this.nom = nom;
+		this.prenoms = prenoms;
+		this.dateDeNaissance = dateDeNaissance;
+		this.photoUrl = photoUrl;
+	}
+
+	/**
+	 * @param nom
+	 * @param prenoms
 	 * @param email
 	 * @param dateDeNaissance
 	 * @param photoUrl
