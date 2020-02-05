@@ -57,7 +57,8 @@ public class CollegueController {
 
 	@PatchMapping(path = "{matricule}")
 	@ResponseBody
-	public void modifPhotUrl(@PathVariable String matricule, @RequestBody ColleguePhotUrlJson colleguePhotUrlJson) {
+	public void modifPhotUrl(@PathVariable String matricule, @RequestBody ColleguePhotUrlJson colleguePhotUrlJson)
+			throws CollegueNonTrouveException {
 		String photoUrl = colleguePhotUrlJson.getPhotoUrl();
 		this.collegueService.modifierPhotUrl(matricule, photoUrl);
 	}

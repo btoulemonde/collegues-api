@@ -2,6 +2,7 @@ package dev.collegues.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
@@ -48,12 +49,14 @@ public class CollegueService {
 	}
 
 	public void ajouterCollegue(CollegueJson collegueJson) {
-		this.collegueRepository.save(new Collegue(collegueJson.getNom(), collegueJson.getPrenoms(),
+		this.collegueRepository.save(new Collegue(UUID.randomUUID().toString(), collegueJson.getNom(),
+				collegueJson.getPrenoms(), collegueJson.getPrenoms() + "." + collegueJson.getNom() + "@gmail.com",
 				collegueJson.getDateDeNaissance(), collegueJson.getPhotoUrl()));
 		ResponseEntity.status(HttpStatus.FOUND);
 	}
 
-	public void modifierPhotUrl(String matricule, String newPhotoUrl) {
+	public void modifierPhotUrl(String matricule, String newPhotoUrl) throws CollegueNonTrouveException {
+		this.collegueRepository.findByMatricule(matricule).orElseThrow(() -> new CollegueNonTrouveException(""));
 		this.collegueRepository.modifierPhotoUrl(matricule, newPhotoUrl);
 	}
 }
