@@ -2,6 +2,7 @@ package dev.collegues.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import dev.collegues.modelJson.ColleguePhotUrlJson;
 import dev.collegues.service.CollegueService;
 import dev.collegues.view.CollegueView;
 
+@CrossOrigin
 @RestController
 @RequestMapping("collegues")
 public class CollegueController {
