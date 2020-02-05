@@ -34,7 +34,7 @@ public class Startup {
 
 		LOG.info("Démarrage de l'application");
 
-		if (this.collegueRepository.count() == 3) {
+		if (this.collegueRepository.count() == 0) {
 
 			List<Collegue> collegues = new ArrayList<Collegue>();
 			collegues.add(new Collegue(UUID.randomUUID().toString(), "Picasso", "Pablo", "pablo.picasso@gmail.com",
