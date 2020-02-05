@@ -52,4 +52,8 @@ public class CollegueService {
 				collegueJson.getDateDeNaissance(), collegueJson.getPhotoUrl()));
 		ResponseEntity.status(HttpStatus.FOUND);
 	}
+
+	public void modifierPhotUrl(String matricule, String newPhotoUrl) {
+		this.collegueRepository.modifierPhotoUrl(matricule, newPhotoUrl);
+	}
 }
