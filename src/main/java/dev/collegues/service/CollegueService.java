@@ -1,6 +1,7 @@
 package dev.collegues.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
@@ -38,13 +39,12 @@ public class CollegueService {
 	}
 
 	public CollegueView listerCollegueParMaricule(String matriculeReq) throws CollegueNonTrouveException {
-		if (!this.collegueRepository.existsByMatricule(matriculeReq)) {
-			throw new CollegueNonTrouveException("");
-		} else {
-			Collegue collegue = this.collegueRepository.findByMatricule(matriculeReq);
-			return new CollegueView(collegue.getMatricule(), collegue.getNom(), collegue.getPrenoms(),
-					collegue.getDateDeNaissance(), collegue.getPhotoUrl());
-		}
+
+		Optional<Collegue> optCollegue = this.collegueRepository.findByMatricule(matriculeReq);
+		Collegue collegue = optCollegue.orElseThrow(() -> new CollegueNonTrouveException(""));
+		return new CollegueView(collegue.getMatricule(), collegue.getNom(), collegue.getPrenoms(),
+				collegue.getDateDeNaissance(), collegue.getPhotoUrl());
+
 	}
 
 	public void ajouterCollegue(CollegueJson collegueJson) {
