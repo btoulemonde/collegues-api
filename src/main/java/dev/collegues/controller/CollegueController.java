@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.collegues.entite.Collegue;
+import dev.collegues.exception.CollegueNonTrouveException;
 import dev.collegues.service.CollegueService;
 import dev.collegues.view.CollegueView;
 
@@ -40,7 +41,7 @@ public class CollegueController {
 
 	@GetMapping(path = "{matricule}")
 	@ResponseBody
-	public CollegueView reqMatricule(@PathVariable String matricule) {
+	public CollegueView reqMatricule(@PathVariable String matricule) throws CollegueNonTrouveException {
 		return this.collegueService.listerCollegueParMaricule(matricule);
 	}
 
