@@ -59,4 +59,9 @@ public class CollegueService {
 		this.collegueRepository.findByMatricule(matricule).orElseThrow(() -> new CollegueNonTrouveException(""));
 		this.collegueRepository.modifierPhotoUrl(matricule, newPhotoUrl);
 	}
+
+	public void modifierEmail(String matricule, String email) throws CollegueNonTrouveException {
+		this.collegueRepository.findByMatricule(matricule).orElseThrow(() -> new CollegueNonTrouveException(""));
+		this.collegueRepository.modifierEmail(matricule, email);
+	}
 }

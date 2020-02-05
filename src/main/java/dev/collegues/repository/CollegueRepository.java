@@ -25,4 +25,9 @@ public interface CollegueRepository extends JpaRepository<Collegue, Integer> {
 	@Transactional
 	void modifierPhotoUrl(@Param("matricule") String matricule, @Param("photoUrl") String newPhotoUrl);
 
+	@Query("Update Collegue c set c.email = :email where c.matricule = :matricule")
+	@Modifying
+	@Transactional
+	void modifierEmail(@Param("matricule") String matricule, @Param("email") String email);
+
 }

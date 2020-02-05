@@ -59,8 +59,15 @@ public class CollegueController {
 	@ResponseBody
 	public void modifPhotUrl(@PathVariable String matricule, @RequestBody ColleguePhotUrlJson colleguePhotUrlJson)
 			throws CollegueNonTrouveException {
-		String photoUrl = colleguePhotUrlJson.getPhotoUrl();
-		this.collegueService.modifierPhotUrl(matricule, photoUrl);
+		if (colleguePhotUrlJson.getPhotoUrl() != null) {
+			String photoUrl = colleguePhotUrlJson.getPhotoUrl();
+			this.collegueService.modifierPhotUrl(matricule, photoUrl);
+		}
+		if (colleguePhotUrlJson.getEmail() != null) {
+			String email = colleguePhotUrlJson.getEmail();
+			this.collegueService.modifierEmail(matricule, email);
+		}
+
 	}
 
 }
