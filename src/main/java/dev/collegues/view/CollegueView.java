@@ -7,6 +7,7 @@ public class CollegueView {
 	private String nom;
 	private String prenoms;
 	private LocalDate dateDeNaissance;
+	private String email;
 	private String photoUrl;
 
 	/**
@@ -15,13 +16,16 @@ public class CollegueView {
 	 * @param prenoms
 	 * @param dateDeNaissance
 	 * @param photoUrl
+	 * @param email
 	 */
-	public CollegueView(String matricule, String nom, String prenoms, LocalDate dateDeNaissance, String photoUrl) {
+	public CollegueView(String matricule, String nom, String prenoms, LocalDate dateDeNaissance, String email,
+			String photoUrl) {
 		super();
 		this.matricule = matricule;
 		this.nom = nom;
 		this.prenoms = prenoms;
 		this.dateDeNaissance = dateDeNaissance;
+		this.email = email;
 		this.photoUrl = photoUrl;
 	}
 
@@ -118,6 +122,25 @@ public class CollegueView {
 	 */
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
+	}
+
+	/**
+	 * Getter
+	 * 
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * Setter
+	 * 
+	 * @param email
+	 *            the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

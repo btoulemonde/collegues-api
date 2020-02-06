@@ -7,6 +7,7 @@ public class CollegueJson {
 	private String nom;
 	private String prenoms;
 	private LocalDate dateDeNaissance;
+	private String email;
 	private String photoUrl;
 
 	/**
@@ -89,6 +90,25 @@ public class CollegueJson {
 	 */
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
+	}
+
+	/**
+	 * Getter
+	 * 
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * Setter
+	 * 
+	 * @param email
+	 *            the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

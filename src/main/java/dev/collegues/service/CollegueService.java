@@ -44,13 +44,13 @@ public class CollegueService {
 		Optional<Collegue> optCollegue = this.collegueRepository.findByMatricule(matriculeReq);
 		Collegue collegue = optCollegue.orElseThrow(() -> new CollegueNonTrouveException(""));
 		return new CollegueView(collegue.getMatricule(), collegue.getNom(), collegue.getPrenoms(),
-				collegue.getDateDeNaissance(), collegue.getPhotoUrl());
+				collegue.getDateDeNaissance(), collegue.getEmail(), collegue.getPhotoUrl());
 
 	}
 
 	public void ajouterCollegue(CollegueJson collegueJson) {
 		this.collegueRepository.save(new Collegue(UUID.randomUUID().toString(), collegueJson.getNom(),
-				collegueJson.getPrenoms(), collegueJson.getPrenoms() + "." + collegueJson.getNom() + "@gmail.com",
+				collegueJson.getPrenoms(), collegueJson.getPrenoms() + collegueJson.getEmail(),
 				collegueJson.getDateDeNaissance(), collegueJson.getPhotoUrl()));
 		ResponseEntity.status(HttpStatus.FOUND);
 	}
