@@ -49,9 +49,9 @@ public class CollegueService {
 	}
 
 	public void ajouterCollegue(CollegueJson collegueJson) {
-		this.collegueRepository.save(new Collegue(UUID.randomUUID().toString(), collegueJson.getNom(),
-				collegueJson.getPrenoms(), collegueJson.getPrenoms() + collegueJson.getEmail(),
-				collegueJson.getDateDeNaissance(), collegueJson.getPhotoUrl()));
+		this.collegueRepository
+				.save(new Collegue(UUID.randomUUID().toString(), collegueJson.getNom(), collegueJson.getPrenoms(),
+						collegueJson.getEmail(), collegueJson.getDateDeNaissance(), collegueJson.getPhotoUrl()));
 		ResponseEntity.status(HttpStatus.FOUND);
 	}
 
