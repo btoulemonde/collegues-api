@@ -30,4 +30,6 @@ public interface CollegueRepository extends JpaRepository<Collegue, Integer> {
 	@Transactional
 	void modifierEmail(@Param("matricule") String matricule, @Param("email") String email);
 
+	boolean existsByEmail(String email);
+
 }
