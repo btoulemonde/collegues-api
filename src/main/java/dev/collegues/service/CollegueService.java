@@ -65,4 +65,8 @@ public class CollegueService {
 		this.collegueRepository.modifierEmail(matricule, email);
 	}
 
+	public boolean existsByEmail(String email) {
+		return this.collegueRepository.existsByEmail(email);
+	}
+
 }
