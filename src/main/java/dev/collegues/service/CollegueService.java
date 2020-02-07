@@ -1,5 +1,6 @@
 package dev.collegues.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -14,6 +15,7 @@ import dev.collegues.exception.CollegueNonTrouveException;
 import dev.collegues.modelJson.CollegueJson;
 import dev.collegues.repository.CollegueRepository;
 import dev.collegues.view.CollegueView;
+import dev.collegues.view.MatriculePhotoView;
 
 @Service
 public class CollegueService {
@@ -67,6 +69,17 @@ public class CollegueService {
 
 	public boolean existsByEmail(String email) {
 		return this.collegueRepository.existsByEmail(email);
+	}
+
+	public List<MatriculePhotoView> listerMatriculePhoto() {
+		List<Collegue> collegues = this.collegueRepository.findAll();
+		List<MatriculePhotoView> liste = new ArrayList<>();
+		for (Collegue col : collegues) {
+			MatriculePhotoView coll = new MatriculePhotoView(col.getMatricule(), col.getPhotoUrl());
+			liste.add(coll);
+
+		}
+		return liste;
 	}
 
 }

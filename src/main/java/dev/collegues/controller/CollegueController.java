@@ -21,6 +21,7 @@ import dev.collegues.modelJson.CollegueJson;
 import dev.collegues.modelJson.ColleguePhotUrlJson;
 import dev.collegues.service.CollegueService;
 import dev.collegues.view.CollegueView;
+import dev.collegues.view.MatriculePhotoView;
 
 @CrossOrigin
 @RestController
@@ -77,6 +78,11 @@ public class CollegueController {
 	@GetMapping(params = "email")
 	public boolean existsByEmail(@RequestParam("email") String email) {
 		return this.collegueService.existsByEmail(email);
+	}
+
+	@GetMapping(path = "photos")
+	public List<MatriculePhotoView> listeMatPho() {
+		return this.collegueService.listerMatriculePhoto();
 	}
 
 }
