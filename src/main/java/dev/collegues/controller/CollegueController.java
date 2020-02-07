@@ -72,9 +72,4 @@ public class CollegueController {
 
 	}
 
-	@GetMapping
-	public boolean existsByEmail(@RequestParam("email") String email) {
-		return this.collegueService.existsByEmail(email);
-	}
-
 }
