@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 @Entity
@@ -18,13 +19,16 @@ public class Collegue {
 	private Integer id;
 
 	private String matricule;
-
+	@NotNull
 	private String nom;
+	@NotNull
 	private String prenoms;
-
+	@NotNull
 	private String email;
 	@Past
+	@NotNull
 	private LocalDate dateDeNaissance;
+	@NotNull
 	private String photoUrl;
 
 	/**

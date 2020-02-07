@@ -1,7 +1,11 @@
 package dev.collegues.modelJson;
 
+import javax.validation.constraints.NotNull;
+
 public class ColleguePhotUrlJson {
+	@NotNull
 	private String photoUrl;
+	@NotNull
 	private String email;
 
 	public ColleguePhotUrlJson() {

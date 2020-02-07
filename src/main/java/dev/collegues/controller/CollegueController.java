@@ -2,6 +2,8 @@ package dev.collegues.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -53,14 +55,14 @@ public class CollegueController {
 	}
 
 	@PostMapping
-	public void ajouterCollegue(@RequestBody CollegueJson collegueJson) {
+	public void ajouterCollegue(@RequestBody @Valid CollegueJson collegueJson) {
 		this.collegueService.ajouterCollegue(collegueJson);
 	}
 
 	@PatchMapping(path = "{matricule}")
 	@ResponseBody
-	public void modifPhotUrl(@PathVariable String matricule, @RequestBody ColleguePhotUrlJson colleguePhotUrlJson)
-			throws CollegueNonTrouveException {
+	public void modifPhotUrl(@PathVariable String matricule,
+			@RequestBody @Valid ColleguePhotUrlJson colleguePhotUrlJson) throws CollegueNonTrouveException {
 		if (colleguePhotUrlJson.getPhotoUrl() != null) {
 			String photoUrl = colleguePhotUrlJson.getPhotoUrl();
 			this.collegueService.modifierPhotUrl(matricule, photoUrl);

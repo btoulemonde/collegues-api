@@ -2,12 +2,21 @@ package dev.collegues.modelJson;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
 public class CollegueJson {
 
+	@NotNull
 	private String nom;
+	@NotNull
 	private String prenoms;
+	@NotNull
+	@Past
 	private LocalDate dateDeNaissance;
+	@NotNull
 	private String email;
+	@NotNull
 	private String photoUrl;
 
 	/**
